@@ -9,6 +9,12 @@
 <ul>
   @foreach (Item item in Model)
   {
-    <li>@item.Description</li>
+    <li><a href='/items/@item.Id'>@item.Description</a></li>
   }
 </ul>
+
+  <a href='/items/new'><button class="btn btn-info">Add a new item</button></a> <br /><br />
+  <a href='/items'><button class="btn btn-primary">See list of items</button></a><br /><br />
+  <form action="/items/delete" method="post">
+  <button type="submit" name="button" button class="btn btn-info">Clear All Items</button>
+  </form>
