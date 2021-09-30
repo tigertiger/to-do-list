@@ -1,0 +1,41 @@
+
+body {
+font-family: 'Dosis', sans-serif;
+}
+
+.container {
+  padding: 3% 0 0 0;
+}
+
+h1 {
+  padding: 2% 0;
+}
+
+div#footer {
+  position:fixed;
+  bottom:0px;
+  left:0px;
+  width:100%;
+  color:#CCC;
+  background:#333;
+  padding:8px;
+}
+
+div#header {
+  position:fixed;
+  top:0px;
+  left:0px;
+  width:100%;
+  color:#CCC;
+  background:#333;
+  padding:8px;
+}
+
+.column {
+  float:right;
+  width:10%;
+}
+
+.column a {
+  color:#fff;
+}

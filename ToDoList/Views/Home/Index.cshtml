@@ -1,27 +1,12 @@
-<head>
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Dosis&display=swap" rel="stylesheet">
-</head>
+@{
+  Layout = "_Layout";
+}
+
 <body>
-  <style>
-    body {
-    font-family: 'Dosis', sans-serif;
-    }
-
-    .container {
-      padding: 3% 0 0 0;
-    }
-
-    h1 {
-      padding: 2% 0;
-    }
-  </style>
   <div class="container">
     <h1>Toodle Dos</h1>
-    <a href='/items/new'><button class="btn btn-info">Add a new item</button></a> <br /><br />
-    <a href='/items'><button class="btn btn-primary">See list of items</button></a><br /><br />
+    <a href='/categories'><button class="btn btn-primary">Your Lists</button></a><br /><br />
+    <a href='/categories/new'><button class="btn btn-info">New List</button></a> <br /><br />
     <form action="/items/delete" method="post">
     <button type="submit" name="button" button class="btn btn-info">Clear All Items</button>
     </form>

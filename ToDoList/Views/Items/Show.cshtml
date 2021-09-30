@@ -1,6 +1,10 @@
-<h1>Item Details: </h1>
+@{
+  Layout = "_Layout";
+}
+<h1>To Do Details: </h1>
 
-<h2>@Model.Description</h2>
+<h2>@Model["item"].Description</h2>
+<h3>Category: @Model["category"].Name</h3>
 
-  <a href='/items/new'><button class="btn btn-info">Add another to do</button></a> <br /><br />
-  <a href='/items'><button class="btn btn-primary">View all</button></a><br /><br />
+<a href='/categories/@Model["category"].Id/items/new'>Add another to do</a>
+<a href='/categories'>View all categories</a>
