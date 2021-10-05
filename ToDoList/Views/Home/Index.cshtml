@@ -2,13 +2,5 @@
   Layout = "_Layout";
 }
 
-<body>
-  <div class="container">
-    <h1>Toodle Dos</h1>
-    <a href='/categories'><button class="btn btn-primary">Your Lists</button></a><br /><br />
-    <a href='/categories/new'><button class="btn btn-info">New List</button></a> <br /><br />
-    <form action="/items/delete" method="post">
-    <button type="submit" name="button" button class="btn btn-info">Clear All Items</button>
-    </form>
-  </div>
-</body>
+<h1>Toodle Dos</h1>
+<p>@Html.ActionLink("See all items", "Index", "Items")</p> 
