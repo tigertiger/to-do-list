@@ -7,6 +7,28 @@
 <h2>Item Details</h2>
 <hr />
 <h3>@Html.DisplayNameFor(model => model.Description): @Html.DisplayFor(model => model.Description)<h3>
-<p>@Html.ActionLink("Back to list", "Index")</p>
+
+  @if(@Model.JoinEntities.Count == 0)
+  {
+    <p>This item is not in any categories</p>
+  }
+  else
+  {
+    <h4>Associated Categories</h4>
+    <ul>
+      @foreach (var join in Model.JoinEntities)
+      {
+        <li>@join.Category.Name</li>
+        @using (Html.BeginForm("DeleteCategory", "Items"))
+        {
+          @Html.Hidden("joinId", @join.CategoryItemId)
+          <input type="submit" value="Delete"/>
+        }
+      }
+    </ul>
+  }
+
+<p>@Html.ActionLink("Add a Category", "AddCategory", new { id = Model.ItemId })</p>
 <p>@Html.ActionLink("Edit Item", "Edit", new {id = Model.ItemId})</p>
 <p>@Html.ActionLink("Delete Item", "Delete", new { id = Model.ItemId })</p>
+<p>@Html.ActionLink("Back to list", "Index")</p>
