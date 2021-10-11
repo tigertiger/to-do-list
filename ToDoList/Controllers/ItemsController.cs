@@ -1,5 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
 using ToDoList.Models;
+using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using Microsoft.EntityFrameworkCore;
@@ -19,7 +21,8 @@ namespace ToDoList.Controllers
 
     public ActionResult Index()
     {
-      return View(_db.Items.ToList());
+      List<Item> sorted = _db.Items.ToList().OrderBy(item => item.DueDate).ToList();
+      return View(sorted);
     }
 
     public ActionResult Details(int id)
@@ -29,6 +32,40 @@ namespace ToDoList.Controllers
         .ThenInclude(join => join.Category)
         .FirstOrDefault(item => item.ItemId == id);
       return View(thisItem);
+    }
+
+    // [HttpPost, ActionName("Details")]
+    // public ActionResult Details(int id, Item item, bool Complete)
+    // {
+    //   Console.WriteLine(Complete + "Blah blah blah");
+    //   if (Complete != false)
+    //   {
+    //   var thisItem = _db.Items.FirstOrDefault(item => item.ItemId == id);
+    //   thisItem.Complete = true;
+    //   }
+    //   _db.Entry(item).State = EntityState.Modified;
+    //   _db.SaveChanges();
+    //   return RedirectToAction("Index");
+    // }
+
+    public ActionResult Complete(int id)
+    {
+      var thisItem = _db.Items.FirstOrDefault(item => item.ItemId == id);
+      return View(thisItem);
+    }
+
+    [HttpPost, ActionName("Complete")]
+    public ActionResult CompleteConfirm(int id, Item item, bool Complete)
+    {
+      Console.WriteLine(Complete + "Blah blah blah");
+      if (Complete != true)
+      {
+        var thisItem = _db.Items.FirstOrDefault(item => item.ItemId == id);
+        thisItem.Complete = true;
+        _db.Entry(thisItem).State = EntityState.Modified;
+        _db.SaveChanges();
+      }
+      return RedirectToAction("Index");
     }
 
     public ActionResult AddCategory(int id)

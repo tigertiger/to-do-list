@@ -3,10 +3,15 @@
 }
 
 @model ToDoList.Models.Item
-
+<div class="container">
 <h2>Item Details</h2>
 <hr />
-<h3>@Html.DisplayNameFor(model => model.Description): @Html.DisplayFor(model => model.Description)<h3>
+<h3>@Html.DisplayFor(model => model.Description)<h3>
+<h5>@Html.DisplayFor(model => model.DueDate)</h5>
+
+@if (Model.Complete == false) {
+  <p>@Html.ActionLink("Mark as Complete", "Complete", new { id = Model.ItemId })</p>
+}
 
   @if(@Model.JoinEntities.Count == 0)
   {
@@ -32,3 +37,4 @@
 <p>@Html.ActionLink("Edit Item", "Edit", new {id = Model.ItemId})</p>
 <p>@Html.ActionLink("Delete Item", "Delete", new { id = Model.ItemId })</p>
 <p>@Html.ActionLink("Back to list", "Index")</p>
+</container>

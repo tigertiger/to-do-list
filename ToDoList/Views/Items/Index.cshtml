@@ -1,7 +1,7 @@
 @{
   Layout = "_Layout";
 }
-
+@using System.Linq;
 @using ToDoList.Models;
 @model List<ToDoList.Models.Item>;
 
@@ -15,8 +15,16 @@
 <ul>
   @foreach(Item item in Model)
   {
-      <li>@Html.ActionLink($"{item.Description}", "Details", new { id = item.ItemId })</li>
-  }
+    @if (@item.Complete == false)
+    {
+      <li>@Html.ActionLink($"{item.Description}", "Details", new { id = item.ItemId }) | @item.DueDate | "Not Completed"
+      </li>
+    }
+    else {
+      <li>@Html.ActionLink($"{item.Description}", "Details", new { id = item.ItemId }) | @item.DueDate | "Completed"
+      </li>
+    }
+}
 </ul>
 
 <p>@Html.ActionLink("Add new item", "Create")</p>
