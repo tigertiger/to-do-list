@@ -2,7 +2,7 @@ using System.Collections.Generic;
 
 namespace ToDoList.Models
 {
-  public class Category
+    public class Category
     {
         public Category()
         {
